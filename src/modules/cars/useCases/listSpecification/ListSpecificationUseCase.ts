@@ -4,10 +4,9 @@ import { ISpecificationsRepository } from "../../repositories/ISpecificationsRep
 class ListSpecificationUseCase {
   constructor(private specificationsRepository: ISpecificationsRepository) {}
 
-  execute(): Specification[] {
-    const specification = this.specificationsRepository.list();
+  async execute(): Promise<Specification[]> {
+    const specification = await this.specificationsRepository.list();
 
-    console.log(specification);
     return specification;
   }
 }
