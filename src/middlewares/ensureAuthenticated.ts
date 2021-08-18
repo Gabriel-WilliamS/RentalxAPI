@@ -34,6 +34,11 @@ export async function ensureAuthenticated(
       throw new AppError("User does not exists", 401);
     }
 
+    // Tem que subscrever as tipagem do request para usar dessa forma na pasta @types
+    request.user = {
+      id: user_id
+    };
+
     next();
   } catch (error) {
     throw new AppError("Invalid token", 401);
